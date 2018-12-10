@@ -18,6 +18,11 @@ Route::get('/EC',function(){
     $items=DB::table('items')->get();
     return view('EC',['items'=>$items]);
 });
+Route::get('/search',function(){
+    $name=request()->get('name');
+    $items=DB::table('items')->where('name','=',$name)->get();
+    return view('EC',['items'=>$items]);
+});
 Route::post('/cart/add', function () {
     //フォームからIDを読み込みDBへ問い合わせる
     $id=request()->get("item_id");
@@ -34,9 +39,12 @@ Route::post('/cart/add', function () {
 Route::get("/cart",function(){
     //セッションからカートの情報を取り出す
   $cartItems=session()->get("CART_ITEMS",[]);
-
+  $sum=0;
+  foreach($cartItems as $cartItem) {
+      $sum += $cartItem->price;
+  }
   return view("cart",[
-      "cartItems"=>$cartItems
+      "cartItems"=>$cartItems,"sum"=>$sum
   ]);
 });
 Route::get('/{id}', function ($id) {

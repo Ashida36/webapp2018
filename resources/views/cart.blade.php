@@ -28,30 +28,34 @@
     </ul>
 </nav>
 <div class="container">
-    <div class="row">
-        <table class="table table-bordered">
-            <thead class="thead-dark">
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">商品名</th>
-                <th scope="col">価格</th>
-            </tr>
-            </thead>
-            <tbody>
-            <?php foreach($cartItems as $cartItem): ?>
-            <tr>
-                <td>{{$cartItem->id}}</td>
-                <td>{{$cartItem->name}}</td>
-                <td>{{$cartItem->price}}</td>
-            </tr>
-            <?php endforeach; ?>
-            </tbody>
-        </table>
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">商品名</th>
+            <th scope="col">価格</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach($cartItems as $cartItem): ?>
+        <tr>
+            <td>{{$cartItem->id}}</td>
+            <td>{{$cartItem->name}}</td>
+            <td>{{$cartItem->price}}</td>
+        </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+    <div class="card text-center">
+        <h5 class="card-header">合計金額</h5>
+        <div class="card-body">
+            <?=$sum?>円
+        </div>
     </div>
-        <form action="/order" method="post">
-            @csrf
-            <button class="btn btn-dark btn-block" type="submit">注文</button>
-        </form>
+    <form action="/order" method="post">
+        @csrf
+        <button class="btn btn-dark btn-block" type="submit">注文</button>
+    </form>
 </div>
 </body>
 </html>

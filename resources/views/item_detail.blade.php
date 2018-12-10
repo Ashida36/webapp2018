@@ -39,24 +39,24 @@
                 <?=$items->description?>
             </div>
             <form action="/cart/add" method="post">
-            <?= csrf_field()?>
+                @csrf
             <table class="table mb-0 table-bordered">
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">ID</th>
-                        <th scope="col">種類</th>
+                        <th scope="col">商品名</th>
                         <th scope="col">価格</th>
                         <th scope="col">購入ボタン</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>1</td>
-                        <td>Core i5 8400 BOX</td>
-                        <td>27,096円</td>
+                        <td><?=$items->id?></td>
+                        <td><?=$items->name?></td>
+                        <td><?=$items->price?></td>
                         <td>
                             <input type="hidden" name="item_id" value="<?=$items->id?>">
-                            <button type="submit" class="btn btn-dark">カート</button>
+                            <button type="submit" class="btn btn-dark btn-block">カート</button>
                         </td>
                     </tr>
                 </tbody>

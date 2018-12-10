@@ -28,6 +28,26 @@
         </ul>
     </nav>
     <div class="container">
+        <form method="get" action="/search">
+            @csrf
+        <table class="table">
+            <tbody>
+            <tr>
+                <th scope="row">商品名</th>
+                <td>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="name" placeholder="商品名">
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-dark btn-block">検索</button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        </form>
         <div class="row">
             <?php foreach($items as $item): ?>
             <div class="col-md-4">
